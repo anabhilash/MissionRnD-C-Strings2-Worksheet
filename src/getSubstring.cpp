@@ -17,7 +17,25 @@ original String
 #include <stddef.h>
 #include <stdlib.h>
 
-char * get_sub_string(char *str, int i, int j){
+char * get_sub_string(char *str, int i, int j)
+{
+	int k = 0,l=0;
+	char * ans = NULL;
+	if (i >= 0 && i<=j && str!=0)
+	{
+		for (k = 0; str[k] != '\0' && k < i; k++);
+		if (str[k] != '\0')
+		{
+			ans = (char *)malloc((j - i + 1)*sizeof(char));
+			while (str[k] != '\0'&&k <= j)
+			{
+				ans[l] = str[k];
+				l++;
+				k++;
+			}
+			ans[l] = '\0';
+		}
+	}
 
-    return NULL;
+    return ans;
 }

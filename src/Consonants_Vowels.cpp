@@ -19,8 +19,42 @@ NOTES: Don't create new string , Dont return anything ,you have been given two p
 
 #include <stddef.h>
 
+int find(char *, int);
+void count_vowels_and_consonants(char *str,int *consonants, int *vowels)
+{
+	int i = 0;
+	*consonants = *vowels = 0;
+	if (str != NULL)
+	{
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			if ((str[i] >= 'a'&&str[i] <= 'z') || (str[i] >= 'A'&&str[i] <= 'Z'))
+			{
+				if (find(str, i))
+				{
+					(*vowels)++;
+				}
+				else
+				{
+					(*consonants)++;
+				}
+			}
+		}
+	}
 
-void count_vowels_and_consonants(char *str,int *consonants, int *vowels){
-
-
+}
+int find(char *str, int i)
+{
+	char str1[11] = "aeiouAEIOU";
+	int k = 0, value = 0;
+	while (str1[k] != '\0')
+	{
+		if (str1[k] == str[i])
+		{
+			value = 1;
+			break;
+		}
+		k++;
+	}
+	return value;
 }
